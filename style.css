@@ -4,4 +4,45 @@ body{
 
 canvas{
     background-color: whitesmoke;
+    border: 3px solid black;
+}
+
+.draggable {
+    cursor: move;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 5px;
+    max-width: 301.6px;
+}
+
+#header{
+    display:grid;
+    grid-template-columns: auto auto auto auto; 
+}
+
+#usedcommand{
+    width: 310px;
+    height: 510px;
+    background-color: rgb(148, 147, 147);
+    border: 3px solid black;
+    overflow: auto;
+}
+
+#allcommand{
+    background-color: rgb(130, 120, 120);
+    display: grid;
+    border: 3px solid black;
+    max-width: 350px;
+    justify-content: space-around;
+}
+
+#run_btn{
+    background-color:none;
+    width: 100px;
+    height: 25px;
+}
+
+#trash{
+    max-width: 250px;
+
 }

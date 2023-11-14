@@ -7,8 +7,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body onload="load()">
-    <div id="allcode"></div>
-    <div id="usecode"></div>
-    <script src="main.js"></script>
+    <div id="header">
+    <div id="canvas_div"></div>
+    <div id="usedcommand" class="droppable" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <legend>Workspace</legend>
+    </div>
+    <div id="allcommand" class="drag-container" ondrop="drop(event)" ondragover="allowDrop(event)">
+        <legend>Blocks</legend>
+        <div id="forward" class="draggable" draggable="true" ondragstart="drag(event)">Elöre</div>
+        <div id="right" class="draggable" draggable="true" ondragstart="drag(event)">Fordul jobbra</div>
+        <div id="left" class="draggable" draggable="true" ondragstart="drag(event)">Fordul balra</div>
+    </div>
+        <img src="img/trash.png" alt="Trash Can" id="trash" ondrop="drop(event)" ondragover="allowDrop(event)">
+</div>
+
+    <script src="/js/base.js"></script>
+    <script src="/js/command.js"></script>
+    <script src="/js/enemy.js"></script>
+    <script src="/js/pop-up.js"></script>
 </body>
 </html>
