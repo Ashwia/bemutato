@@ -14,14 +14,14 @@ function load() {
 
     var floorArray = [];
     
-    for(let y =0;y<10;y++){
+    for(let y = 0; y < 10; y++){
         for (let i = 0; i < 10; i++) {
-            floorArray.push(new obj(dirt, 50, 50, xpos, ypos));
+            floorArray.push(new obj(dirt, 50, 50, xpos, ypos, y)); // Hozzáadva a z koordináta (y értéke)
             xpos = xpos + 50;
         }
-        ypos = ypos+50;
+        xpos = 0;
+        ypos = ypos + 50;
     }
-
 
     gameArea.addPlayer(playerObject);
     gameArea.addFloor(floorArray);
@@ -48,10 +48,10 @@ var gameArea = {
     update: function () {
         this.clear();
 
-        // Rendezze az objektumokat z koordináta szerint
+        // Rendezze az objektumokat y és z koordináta szerint
         var allObjects = this.floorArray.concat(this.player);
         allObjects.sort(function (a, b) {
-            return a.z - b.z;
+            return a.z - b.z || a.y - b.y; // Sorrendezés y és z koordináta szerint
         });
 
         for (let i = 0; i < allObjects.length; i++) {
