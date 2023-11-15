@@ -60,7 +60,7 @@ function run() {
         gameArea.update();
 
         for (let i = 0; i < commands.length; i++) {
-            setTimeout(() => executeCommand(commands[i]), i * 1000);
+            setTimeout(() => executeCommand(commands[i]), i * 500);
         }
     }
 }

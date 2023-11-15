@@ -13,11 +13,12 @@ canvas{
     padding: 10px;
     margin: 5px;
     max-width: 301.6px;
+    max-height: 50px;
 }
 
 #header{
     display:grid;
-    grid-template-columns: auto auto auto auto; 
+    grid-template-columns: auto auto auto; 
 }
 
 #usedcommand{
@@ -33,16 +34,20 @@ canvas{
     display: grid;
     border: 3px solid black;
     max-width: 350px;
-    justify-content: space-around;
 }
 
 #run_btn{
-    background-color:none;
+    background-color:orange;
     width: 100px;
-    height: 25px;
+    height: 30px;
+    font-size: 20px;
+    margin-left: 25px;
 }
 
 #trash{
-    max-width: 250px;
+    max-width: 150px;
+}
 
+legend{
+    font-size: 20px;
 }

@@ -9,27 +9,36 @@ dirt.src = './img/darkDirtBlock.png';
 var zombie = new Image();
 zombie.src = "./img/zombie.png";
 
+var nextlv = new Image();
+nextlv.src = "./img/next.png";
+
+var n =12;
+var floorArray = [];
 function load() {
     gameArea.start();
     var playerObject = new obj(player, 50, 50, 0, 0);
     let xpos = 0;
     let ypos = 0;
-
-    var floorArray = [];
-    
-    for(let y = 0; y < 10; y++){
+    for (let y = 0; y < 10; y++) {
         for (let i = 0; i < 10; i++) {
-            floorArray.push(new obj(dirt, 50, 50, xpos, ypos, y));
+            floorArray.push(new obj(dirt, 50, 50, xpos, ypos, 1));
             xpos = xpos + 51;
         }
         xpos = 0;
         ypos = ypos + 51;
     }
+    gen_zombie(n);
 
+
+    var nextobj = new obj(nextlv, 50, 50, 459, 459, 90);
+    floorArray.push(nextobj);
+    gameArea.addlevel(nextobj);
     gameArea.addPlayer(playerObject);
     gameArea.addFloor(floorArray);
     gameArea.update();
 }
+
+
 
 var gameArea = {
     canvas: document.createElement('canvas'),
@@ -41,30 +50,32 @@ var gameArea = {
         this.interval = setInterval(updateGameArea, 20);
         this.player = null;
         this.floorArray = [];
-    },
-    addPlayer: function (player) {
-        this.player = player;
-    },
-    addFloor: function (floorArray) {
-        this.floorArray = floorArray;
-    },
-    update: function () {
-        this.clear();
-
-        // Rendezze az objektumokat y és z koordináta szerint
-        var allObjects = this.floorArray.concat(this.player);
-        allObjects.sort(function (a, b) {
-            return a.z - b.z || a.y - b.y; // Sorrendezés y és z koordináta szerint
-        });
-
-        for (let i = 0; i < allObjects.length; i++) {
-            allObjects[i].update();
-        }
-    },
-    clear: function () {
-        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.next = null;
+        this.addPlayer = function (player) {
+            this.player = player;
+        };
+        this.addFloor = function (floorArray) {
+            this.floorArray = floorArray;
+        };
+        this.addlevel = function (next) {
+            this.next = next;
+        };
+        this.update = function () {
+            this.clear();
+            var allObjects = this.floorArray.concat(this.player, this.next);
+            allObjects.sort(function (a, b) {
+                return a.z - b.z || a.y - b.y;
+            });
+            for (let i = 0; i < allObjects.length; i++) {
+                allObjects[i].update();
+            }
+        };
+        this.clear = function () {
+            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        };
     }
 };
+
 
 function obj(src, width, height, x, y, z) {
     this.src = src;
@@ -80,5 +91,6 @@ function obj(src, width, height, x, y, z) {
 }
 
 function updateGameArea() {
+    checkCollision();
     gameArea.update();
 }
