@@ -72,7 +72,7 @@ function obj(src, width, height, x, y, z) {
     this.height = height;
     this.x = x;
     this.y = y;
-    this.z = z || 0;
+    this.z = z || 100;
     this.update = function () {
         ctx = gameArea.context;
         ctx.drawImage(this.src, this.x, this.y, this.width, this.height);

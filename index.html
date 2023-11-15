@@ -8,15 +8,22 @@
 </head>
 <body onload="load()">
     <div id="header">
-    <div id="canvas_div"></div>
+    <div>
+        <div id="canvas_div">
+
+        </div>
+        <div>
+            <button id="run_btn" onclick="run()">Run</button>
+        </div>
+    </div>
     <div id="usedcommand" class="droppable" ondrop="drop(event)" ondragover="allowDrop(event)">
         <legend>Workspace</legend>
     </div>
     <div id="allcommand" class="drag-container" ondrop="drop(event)" ondragover="allowDrop(event)">
         <legend>Blocks</legend>
-        <div id="forward" class="draggable" draggable="true" ondragstart="drag(event)">Elöre</div>
-        <div id="right" class="draggable" draggable="true" ondragstart="drag(event)">Fordul jobbra</div>
-        <div id="left" class="draggable" draggable="true" ondragstart="drag(event)">Fordul balra</div>
+        <div id="forward" class="draggable" draggable="true" ondragstart="drag(event)">Lefele megy</div>
+        <div id="right" class="draggable" draggable="true" ondragstart="drag(event)">Jobbra megy</div>
+        <div id="left" class="draggable" draggable="true" ondragstart="drag(event)">Balra megy</div>
     </div>
         <img src="img/trash.png" alt="Trash Can" id="trash" ondrop="drop(event)" ondragover="allowDrop(event)">
 </div>

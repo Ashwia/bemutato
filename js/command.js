@@ -31,16 +31,81 @@ function drop(ev) {
         var itemCount = droppableChildren.length;
         var itemIndex = droppableChildren.indexOf(clonedElement);
 
-        console.log("Az elemek száma a droppable-ben: " + itemCount + "\nAz " + clonedElement.innerText + " az " + (itemIndex + 1) + ". elem.");
+        console.log("Az elemek száma a droppable-ben: " + itemCount + "\nAz " + clonedElement.innerText + " az " + (itemIndex) + ". elem.");
 
-        commands.push({
-            id: clonedElement.id,
-            text: clonedElement.innerText
-        });
+        commands.push(clonedElement.innerText);
     }
-    else if (droppable.id === 'trash') {
+    else if (droppable.id == 'trash') {
         draggedElement.parentElement.removeChild(draggedElement);
         console.log(draggedElement.innerText);
-        commands = commands.filter(command => command.id !== draggedElement.id);
+        commands = commands.filter(command => command !== draggedElement.innerText);
     }
+    
+}
+
+
+var player_direction = 0;
+
+
+
+function run() {
+    console.log(commands.length)
+    console.log(commands)
+    if(commands.length === 0){
+        gameArea.player.y = 0;
+        gameArea.player.x = 0;
+    } else {
+        gameArea.player.y = 0;
+        gameArea.player.x = 0;
+        gameArea.update();
+
+        for (let i = 0; i < commands.length; i++) {
+            setTimeout(() => executeCommand(commands[i]), i * 1000);
+        }
+    }
+}
+
+function executeCommand(command) {
+    switch (command) {
+        case "Lefele megy":
+            moveDown();
+            break;
+        case "Jobbra megy":
+            moveRight();
+            break;
+        case "Balra megy":
+            moveLeft();
+            break;
+        default:
+            console.log("Unknown command: " + command);
+    }
+}
+
+
+function moveDown() {
+    if (gameArea.player.y < gameArea.canvas.height - gameArea.player.height && gameArea.player.y !=510-51) {
+        gameArea.player.y += 51;
+    }
+    gameArea.update();
+}
+
+
+
+
+
+
+
+function moveRight() {
+    if (gameArea.player.x < gameArea.canvas.width - gameArea.player.width && gameArea.player.x !=510-51) {
+        gameArea.player.x += 51;
+        console.log("asd")
+    }
+    gameArea.update();
+}
+
+function moveLeft() {
+    if (gameArea.player.x > 0) {
+        gameArea.player.x -= 51;
+    }
+    gameArea.update();
 }
