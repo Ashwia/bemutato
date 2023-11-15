@@ -27,7 +27,6 @@ function checkCollision() {
     for (let i = 0; i < gameArea.floorArray.length; i++) {
         let object = gameArea.floorArray[i];
         if (object !== gameArea.player && collision(gameArea.player, object)) {
-            // A zombie-objektum és a next-objektum src tulajdonságának összehasonlítása
             if (object.src === zombieObject.src) {
                 alert("Game Over");
                 gameArea.player.y = 0;
