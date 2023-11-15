@@ -1,5 +1,6 @@
 body{
     background-color: gray;
+    margin-inline: 100px;
 }
 
 canvas{
@@ -11,29 +12,31 @@ canvas{
     cursor: move;
     border: 1px solid #ccc;
     padding: 10px;
-    margin: 5px;
     max-width: 301.6px;
-    max-height: 50px;
+    max-height: 25px;
+    text-align: center;
+    margin: 5px;
 }
 
 #header{
     display:grid;
-    grid-template-columns: auto auto auto; 
+    grid-template-columns: 600px 400px 300px; 
 }
 
 #usedcommand{
     width: 310px;
     height: 510px;
-    background-color: rgb(148, 147, 147);
+    background-color: rgb(171, 171, 171);
     border: 3px solid black;
     overflow: auto;
 }
 
 #allcommand{
-    background-color: rgb(130, 120, 120);
-    display: grid;
+    background-color: rgb(171, 171, 171);
+    display: block;
     border: 3px solid black;
     max-width: 350px;
+    max-height: 250px;
 }
 
 #run_btn{
