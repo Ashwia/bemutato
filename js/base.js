@@ -1,5 +1,3 @@
-// script.js
-
 var player = new Image();
 player.src = './img/player.png';
 

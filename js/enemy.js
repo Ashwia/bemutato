@@ -1,4 +1,3 @@
-// Új objektum létrehozása a zombiához
 var zombieObject = new obj(zombie, 50, 50, 0, 0, 40);
 var nextObject = new obj(nextlv, 50, 50, 459, 459, 40);
 

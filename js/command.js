@@ -44,10 +44,6 @@ function drop(ev) {
 }
 
 
-var player_direction = 0;
-
-
-
 function run() {
     console.log(commands.length)
     console.log(commands)
